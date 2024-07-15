@@ -11,6 +11,6 @@
   "license": "ISC",
   "dependencies": {
     "telegraf": "^4.15.0",
-    "telegram": "^2.18.38"
+    "telegram": "^2.22.2"
   }
 }

@@ -91,6 +91,7 @@ const eventHandler = async (event) => {
   const channelId = message?.peerId?.channelId?.toString();
   const userId = message?.peerId?.userId?.toString();
   let contract
+  console.log(channelId)
   if (channelId === '1696523760') {
     contract = await handleMessage(message.message);
   } else if (userId === '5970795027') { // BananaGun Bot
