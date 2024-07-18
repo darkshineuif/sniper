@@ -183,7 +183,25 @@ async function main() {
 
       console.log("Connected!");
       //fetchChannelMessages();  // Fetch messages now
-
+      const checkConnection = async () => {
+        try {
+          // Attempt to make a simple request to Telegram servers
+          await client.getMe();
+          console.log("Connection is alive");
+        } catch (error) {
+          console.error("Connection seems to be lost:", error);
+          // Implement reconnection logic here
+          try {
+            await client.connect();
+            console.log("Reconnected successfully");
+          } catch (reconnectError) {
+            console.error("Failed to reconnect:", reconnectError);
+          }
+        }
+      };
+      
+      // Check connection every 5 minutes
+      setInterval(checkConnection, 5 * 60 * 1000);
     } catch (error) {
       console.error("Error connecting to Telegram:", error);
     }
